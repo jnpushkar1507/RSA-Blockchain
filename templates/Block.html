@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Home Page</title>
+</head>
+<body>
+<h1> Welcome to the RSA BlockChain</h1>
+<h4>Please Enter The Required Data!</h4>    
+<form method="post" action="/block">
+    <p>
+        <label>Enter No. Of Vehicles</label><br>
+        <input type="number" name="i">
+    </p>
+
+    
+    <p>
+        <label>Enter RSA ID</label><br>
+        <input name="RSAID">
+    </p>
+    
+    <p>
+        <label>Enter RSA Location</label><br>
+        <input name="location">
+    </p>
+    
+    <div id="people-container">
+        <h3>Vehicle 1:</h3>
+        <p>
+            <label>Vehicle Registration Number</label><br>
+            <input name="car[1][number]">
+        </p>
+
+        <p>
+            <label>Destination</label><br>
+            <input name="car[1][dest]">
+        </p>
+
+        <p>
+            <label>Average Speed(KM/H)</label><br>
+            <input type="number" name="car[1][speed]">
+        </p>
+
+
+
+       
+    </div>
+
+    <a href="javascript:;" id="add-new-Vehicle">Add new Vehicle</a>
+
+    <p>
+        <input type="submit" value="Submit" name="ok"/>
+    </p>
+</form>
+
+<script>
+let i = 2;
+document.getElementById('add-new-Vehicle').onclick = function () {
+    let template = `
+        <h3>Vehicle ${i}:</h3>
+        <p>
+            <label>Vehicle Id</label><br>
+            <input name="car[${i}][number]">
+        </p>
+        <p>
+            <label>Destination</label><br>
+            <input name="car[${i}][dest]">
+        </p>
+
+        <p>
+            <label>Average Speed(KM/H)</label><br>
+            <input type="number" name="car[${i}][speed]">
+        </p>`;
+
+    let container = document.getElementById('people-container');
+    let div = document.createElement('div');
+    div.innerHTML = template;
+    container.appendChild(div);
+
+    i++;
+}
+</script>
+</form>
+</body>
+</html>
